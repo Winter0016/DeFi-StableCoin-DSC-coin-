@@ -37,3 +37,23 @@ Includes a Chainlink data freshness safeguard:
 If price feeds have not been updated for more than 3 hours, liquidation operations become temporarily blocked.
 
 This is currently implemented only for liquidation, but will be extended to minting, depositing, and redeeming collateral.
+
+3️⃣ Testing Suite
+
+The protocol has been thoroughly tested on both:
+
+✅ Local Development Network (Anvil)
+
+✅ Sepolia Testnet
+
+Testing methodologies include:
+
+🧪 Unit Tests — ensure individual logic correctness
+🎲 Stateless Fuzz Tests — verify behavior under random inputs
+🔁 Invariant (Stateful Fuzz) Tests — enforce protocol-level safety rules such as:
+
+The system must never become under-collateralized
+
+Total DSC supply must always remain fully backed by collateral
+
+These tests ensure protocol resilience, security, and stability under a wide variety of conditions.
