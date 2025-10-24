@@ -1,66 +1,39 @@
-## Foundry
+🏦 DeFi Stablecoin Protocol — Project Overview
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This project consists of two main smart contracts:
 
-Foundry consists of:
+1️⃣ DecentralizedStableCoin Contract (DSC Token Contract)
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+Acts as the stablecoin token contract.
 
-## Documentation
+Minting and burning can only be performed through the DSCEngine contract.
 
-https://book.getfoundry.sh/
+Represents a decentralized, over-collateralized stablecoin pegged to $1 USD.
 
-## Usage
+Stores user-owned DSC token balances.
 
-### Build
+2️⃣ DSCEngine Contract (Core Logic Contract)
 
-```shell
-$ forge build
-```
+Handles all core protocol functionality:
 
-### Test
+Deposit collateral (WETH or WBTC)
 
-```shell
-$ forge test
-```
+Mint DSC tokens
 
-### Format
+Redeem collateral
 
-```shell
-$ forge fmt
-```
+Liquidate under-collateralized positions
 
-### Gas Snapshots
+Only accepts WETH and WBTC from pre-existing contracts deployed on the Sepolia testnet:
 
-```shell
-$ forge snapshot
-```
+WETH: 0xdd13E55209Fd76AfE204dBda4007C227904f0a81
+WBTC: 0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063
 
-### Anvil
 
-```shell
-$ anvil
-```
+Integrates Chainlink Price Feeds for secure, reliable USD pricing of collateral assets.
 
-### Deploy
+Includes a Chainlink data freshness safeguard:
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+If price feeds have not been updated for more than 3 hours, liquidation operations become temporarily blocked.
 
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+This is currently implemented only for liquidation, but will be extended to minting, depositing, and redeeming collateral.
