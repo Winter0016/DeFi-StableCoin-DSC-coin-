@@ -1,3 +1,5 @@
+Found a flaw of this contract: transfer function will not update the s_dscminted => unable to work with uniswap contract
+
 🏦 DeFi Stablecoin Protocol — Project Overview
 
 This project consists of two main smart contracts:
