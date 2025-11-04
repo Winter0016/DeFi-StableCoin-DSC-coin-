@@ -39,8 +39,9 @@ contract DecentralizedStableCoin is ERC20Burnable , Ownable{
     error DecentralizedStableCoin_ZeroAddress();
 
     event USER_BALANCE(address indexed user);
+    event USER_LIQUIDATED( address indexed user);
 
-    constructor()ERC20("DecentralizedStableCoin","DSC")Ownable(address(msg.sender)) {
+    constructor()ERC20("Phuc stable coin","PH")Ownable(address(msg.sender)) {
 
     }
     function burn(address user,uint256 _ammount) public onlyOwner{

@@ -1,4 +1,4 @@
-Found a flaw of this contract: transfer function will not update the s_dscminted => unable to work with uniswap contract
+Next version deploy can be used with Uniswapv2 project.
 
 🏦 DeFi Stablecoin Protocol — Project Overview
 
